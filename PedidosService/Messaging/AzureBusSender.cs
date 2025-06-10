@@ -11,8 +11,9 @@ namespace PedidosService.Messaging
 
         public AzureBusSender(IConfiguration configuration)
         {
-            var connectionString = configuration["AZURE_SERVICEBUS_CONNECTION"];
-            var queueName = configuration["AZURE_SERVICEBUS_QUEUE"];
+            var connectionString = Environment.GetEnvironmentVariable("AZURE_SERVICEBUS_CONNECTION");
+            var queueName = Environment.GetEnvironmentVariable("AZURE_SERVICEBUS_QUEUE");
+
             _client = new ServiceBusClient(connectionString);
             _sender = _client.CreateSender(queueName);
         }
