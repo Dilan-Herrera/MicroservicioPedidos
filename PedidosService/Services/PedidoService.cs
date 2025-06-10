@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PedidosService.Data;
 using PedidosService.Interfaces;
+using PedidosService.Messaging;
 using PedidosService.Models;
 
 namespace PedidosService.Services
