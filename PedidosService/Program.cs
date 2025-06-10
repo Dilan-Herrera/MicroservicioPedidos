@@ -1,5 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using PedidosService.Data;
+using PedidosService.Data;
+using Microsoft.EntityFrameworkCore;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
