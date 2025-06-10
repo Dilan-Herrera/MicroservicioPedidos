@@ -1,6 +1,7 @@
 using dotenv.net;
 using Microsoft.EntityFrameworkCore;
 using PedidosService.Data;
+using PedidosService.Messaging;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,12 +13,17 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+
+// conexion con la base de datos
 DotNetEnv.Env.Load();
 
 string connectionString = Environment.GetEnvironmentVariable("CONNECTION_STRING");
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
+
+
+builder.Services.AddScoped<IAzureBusSender, AzureBusSender>();
 
 
 var app = builder.Build();
